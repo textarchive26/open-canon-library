@@ -19,7 +19,8 @@ h1 {
   border-bottom: 1px solid #b89b5e;
   padding-bottom: 15px;
   margin-bottom: 20px;
-}
+  position: relative;
+z-index: 1;}
 
 em {
   color: #6e5a45;
@@ -71,5 +72,5 @@ h1::before {
     height: 220px;
     background: radial-gradient(circle at center, rgba(120, 90, 40, 0.08), transparent 70%);
     opacity: 0.4;
-    z-index: -1;
+    z-index: 0;
 }
