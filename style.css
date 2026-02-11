@@ -7,14 +7,24 @@ body {
 
   /* parchment vibe */
   background: #f3ead7;
-  background-image: radial-gradient(rgba(120, 90, 40, 0.08) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(120,90,40,0.08) 1px, transparent 1px);
   background-size: 3px 3px;
 
   color: #1f1a14;
-h1 {
-  position: relative;
-  z-index: 1;  
 }
+
+/* Title styling */
+h1 {
+  font-size: 2.6em;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #b89b5e;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Subtle cross watermark */
 h1::before {
   content: "";
   position: absolute;
@@ -24,13 +34,14 @@ h1::before {
   width: 220px;
   height: 220px;
   pointer-events: none;
-  opacity: 0.30;
+  opacity: 0.18;
   z-index: 0;
 
   background:
-    linear-gradient(to bottom, rgba(120,90,40,0.25) 0%, rgba(120,90,40,0.25) 100%) center/8px 180px no-repeat,
-    linear-gradient(to right, rgba(120,90,40,0.25) 0%, rgba(120,90,40,0.25) 100%) center/180px 8px no-repeat;
+    linear-gradient(to bottom, rgba(120,90,40,0.35), rgba(120,90,40,0.35)) center/8px 180px no-repeat,
+    linear-gradient(to right, rgba(120,90,40,0.35), rgba(120,90,40,0.35)) center/180px 8px no-repeat;
 }
+
 em {
   color: #6e5a45;
 }
@@ -47,39 +58,11 @@ nav a {
 }
 
 nav a:hover {
-  color: #7a4d1b;
-}
-
-p {
-  margin-bottom: 18px;
-}
-
-h2 {
-  margin-top: 50px;
-  font-size: 1.35em;
-  letter-spacing: 0.5px;
-  color: #2b241d;
+  color: #7a6d1b;
 }
 
 footer {
   margin-top: 60px;
   font-size: 0.9em;
   color: #6b6257;
-}
-/* subtle cross watermark behind title */
-h1 {
-    position: relative;
-}
-
-h1::before {
-    content: "";
-    position: absolute;
-    top: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 220px;
-    height: 220px;
-    background: radial-gradient(circle at center, rgba(120, 90, 40, 0.08), transparent 70%);
-    opacity: 0.4;
-    z-index: -1;
 }
