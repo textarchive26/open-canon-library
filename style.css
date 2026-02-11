@@ -1,68 +1,139 @@
-body {
-  font-family: "Georgia", serif;
+/* The Open Canon Library - stable parchment + sepia frame + subtle cross watermark */
+
+:root{
+  --paper:#f3ead7;
+  --ink:#1f1a14;
+  --sepia:#6e5a45;
+  --rule:#b89b5e;
+  --frame:rgba(110,90,69,0.35);
+  --frame-soft:rgba(110,90,69,0.18);
+}
+
+*{ box-sizing:border-box; }
+
+html, body{
+  height:100%;
+}
+
+body{
+  font-family: Georgia, serif;
   max-width: 860px;
   margin: 70px auto;
   padding: 0 30px;
   line-height: 1.8;
+  color: var(--ink);
 
-  /* parchment vibe */
-  background: #f3ead7;
-  background-image: radial-gradient(rgba(120,90,40,0.08) 1px, transparent 1px);
-  background-size: 3px 3px;
+  /* parchment base */
+  background-color: var(--paper);
 
-  color: #1f1a14;
+  /* tiny speckle + soft vignettes (no images needed) */
+  background-image:
+    radial-gradient(rgba(120,90,40,0.08) 1px, transparent 1px),
+    radial-gradient(ellipse at top, rgba(255,255,255,0.55), transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(110,90,69,0.14), transparent 60%);
+  background-size: 3px 3px, 100% 100%, 100% 100%;
+  background-position: 0 0, 0 0, 0 0;
+  background-repeat: repeat, no-repeat, no-repeat;
+
+  /* soft sepia frame around the whole page */
+  border: 2px solid var(--frame);
+  border-radius: 10px;
+  box-shadow:
+    0 0 0 8px rgba(243,234,215,0.6) inset,
+    0 0 0 18px var(--frame-soft) inset,
+    0 10px 30px rgba(0,0,0,0.08);
 }
 
-/* Title styling */
-h1 {
+/* title */
+h1{
   font-size: 2.6em;
   letter-spacing: 1px;
-  border-bottom: 1px solid #b89b5e;
+  border-bottom: 1px solid var(--rule);
   padding-bottom: 15px;
   margin-bottom: 20px;
+
+  /* needed for watermark positioning */
   position: relative;
   z-index: 1;
 }
 
-/* Subtle cross watermark */
-h1::before {
+/* subtle cross watermark behind the title */
+h1::before{
   content: "";
   position: absolute;
-  top: -20px;
   left: 50%;
+  top: -26px;
   transform: translateX(-50%);
   width: 220px;
   height: 220px;
   pointer-events: none;
-  opacity: 0.18;
-  z-index: 0;
 
+  /* cross made from two gradients */
   background:
-    linear-gradient(to bottom, rgba(120,90,40,0.35), rgba(120,90,40,0.35)) center/8px 180px no-repeat,
-    linear-gradient(to right, rgba(120,90,40,0.35), rgba(120,90,40,0.35)) center/180px 8px no-repeat;
+    linear-gradient(to bottom, rgba(110,90,69,0.25) 0%, rgba(110,90,69,0.25) 100%) center/10px 180px no-repeat,
+    linear-gradient(to right,  rgba(110,90,69,0.25) 0%, rgba(110,90,69,0.25) 100%) center/180px 10px no-repeat;
+
+  opacity: 0.10;          /* change to 0.14 if you want it easier to see */
+  filter: blur(0.2px);
+  z-index: 0;
 }
 
-em {
-  color: #6e5a45;
+em{
+  color: var(--sepia);
 }
 
-nav {
-  margin-bottom: 30px;
+p{
+  margin: 14px 0;
 }
 
-nav a {
+.seek{
+  margin-top: 10px;
+  color: #2b241d;
+  font-size: 1.35em;
+  letter-spacing: 0.5px;
+}
+
+nav{
+  margin: 20px 0 30px;
+}
+
+nav a{
   margin-right: 20px;
   text-decoration: none;
   color: #3b3b3b;
   font-weight: 600;
 }
 
-nav a:hover {
-  color: #7a6d1b;
+nav a:hover{
+  color: #7a4d1b;
+  text-decoration: underline;
 }
 
-footer {
+hr{
+  border: none;
+  border-top: 1px solid rgba(184,155,94,0.65);
+  margin: 26px 0;
+}
+
+h2, h3{
+  margin-top: 40px;
+  color: #2b241d;
+}
+
+footer{
   margin-top: 60px;
   font-size: 0.9em;
   color: #6b6257;
+}
+
+/* mobile spacing */
+@media (max-width: 700px){
+  body{
+    margin: 30px auto;
+    padding: 0 16px;
+  }
+  nav a{
+    display: inline-block;
+    margin: 0 14px 10px 0;
+  }
 }
