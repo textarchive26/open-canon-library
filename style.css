@@ -11,6 +11,9 @@ body {
   background-size: 3px 3px;
 
   color: #1f1a14;
+h1 {
+  position: relative;
+  z-index: 1;  
 }
 h1::before {
   content: "";
@@ -21,7 +24,7 @@ h1::before {
   width: 220px;
   height: 220px;
   pointer-events: none;
-  opacity: 0.08;
+  opacity: 0.30;
   z-index: 0;
 
   background:
